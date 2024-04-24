@@ -16,5 +16,5 @@
       "@config/*": ["./src/config/*"]
     }
   },
-  "include": ["./*.js", "src/**/*.ts", "test/**/*.ts", "config/index.ts"]
+  "include": ["./*.js", "src/**/*.ts", "test/**/*.ts", "api/index.ts"]
 }

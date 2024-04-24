@@ -1,9 +1,9 @@
 //##########################################################################################
 // TREE NODE TYPE
 //##########################################################################################
-type ITreeNode = {
+type TTreeNode = {
   id: string;
   name: string;
   description: string;
-  children: ITreeNode[];
+  children: TTreeNode[];
 };

@@ -3,7 +3,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "target": "esnext",
-    "module": "CommonJS",
+    "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
@@ -13,7 +13,8 @@
       "@data/*": ["./data/*"],
       "@utils/*": ["./src/utils/*"],
       "@Types/*": ["./src/types/*"],
-      "@config/*": ["./src/config/*"]
+      "@config/*": ["./src/config/*"],
+      "@src/*": ["./src/*"]
     }
   },
   "include": ["./*.js", "src/**/*.ts", "test/**/*.ts", "api/index.ts"]

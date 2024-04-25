@@ -1,4 +1,4 @@
-import { TErrorResponse } from '@Types/errors';
+import { TErrorResponse } from './types/errors';
 import { NextFunction, Request, Response } from 'express';
 
 //###########################################################################################

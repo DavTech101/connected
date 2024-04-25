@@ -8,14 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
     "strict": true,
-    "skipLibCheck": true,
-    "paths": {
-      "@data/*": ["./data/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@Types/*": ["./src/types/*"],
-      "@config/*": ["./src/config/*"],
-      "@src/*": ["./src/*"]
-    }
+    "skipLibCheck": true
   },
   "include": ["./*.js", "src/**/*.ts", "test/**/*.ts", "api/index.ts"]
 }

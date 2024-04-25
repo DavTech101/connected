@@ -1,15 +1,14 @@
-//##########################################################################################
-// TREE NODE TYPE
-//##########################################################################################
-export type TTreeNode = {
-  name: string;
-  parent: string;
-  description: string;
-};
+import express from 'express';
+import { getTreeDataController } from '../controllers/treeDataController';
 
 //##########################################################################################
-// TREE DATA TYPE
+// API DATA ROUTER
 //##########################################################################################
-export type TTreeData = {
-  data: TTreeNode[];
-};
+const router = express.Router();
+
+//##########################################################################################
+// ROUTES
+//##########################################################################################
+router.route('/').get(getTreeDataController);
+
+export default router;

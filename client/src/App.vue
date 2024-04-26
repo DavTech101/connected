@@ -4,7 +4,7 @@
       <Suspense>
         <template #default>
           <div class="flex flex-col gap-10 justify-center items-center">
-            <InfoBox :node="clickedNode" />
+            <InfoBox :node="clickedNode" :crossClickedNode="crossClickedNode" />
             <TreeNodes
               :nodes="treeData"
               v-if="treeData !== undefined"
@@ -35,6 +35,10 @@ const clickedNode = ref<TTreeNodeWithChildren | undefined>(undefined);
 onMounted(async () => {
   treeData.value = await fetchTreeData();
 });
+
+const crossClickedNode = () => {
+  clickedNode.value = undefined;
+};
 
 const handleNodeClick = (node: TTreeNodeWithChildren) => {
   if (clickedNode.value && clickedNode.value.name === node.name) {

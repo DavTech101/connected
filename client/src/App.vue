@@ -23,24 +23,14 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import { fetchTreeData } from './server/tree';
 import InfoBox from './components/InfoBox.vue';
-import { TREE_DATA_URL } from './data/constants';
 import TreeNodes from './components/TreeNodes.vue';
 import type { TTreeNode, TTreeNodeWithChildren } from '@Types/index';
 
 const treeData = ref<TTreeNode[] | undefined>(undefined);
 const clickedNode = ref<TTreeNodeWithChildren | undefined>(undefined);
-
-const fetchTreeData = async () => {
-  try {
-    const response = await axios.get<TTreeNode[]>(TREE_DATA_URL);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching tree data: fetchTreeData() ');
-  }
-};
 
 onMounted(async () => {
   treeData.value = await fetchTreeData();

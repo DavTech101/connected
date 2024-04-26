@@ -57,7 +57,7 @@ const mountTree = (rootNode: TTreeNodeWithChildren) => {
     .y((d: any) => d.x);
 
   // Create the links
-  const links = svg
+  svg
     .selectAll('.link')
     .data(root.links())
     .enter()

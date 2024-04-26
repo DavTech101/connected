@@ -37,11 +37,6 @@ onMounted(async () => {
 });
 
 const handleNodeClick = (node: TTreeNodeWithChildren) => {
-  console.log('node', node);
-
-  console.log('clickedNode', clickedNode.value);
-  console.log(node);
-
   if (clickedNode.value && clickedNode.value.name === node.name) {
     clickedNode.value = undefined;
     return;

@@ -4,10 +4,16 @@
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
+    "types": ["node"],
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
 
     "baseUrl": ".",
     "paths": {
+      "@data*": ["./src/data/*"],
+      "@utils*": ["./src/utils/*"],
+      "@Types*": ["./src/types/*"],
+      "@server*": ["./src/server/*"],
+      "@components*": ["./src/components/*"],
       "@/*": ["./src/*"]
     }
   }

@@ -1,25 +1,20 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
-</script>
-
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
-
-    <div class="wrapper">
+    <div class="py-10">
       <Suspense>
         <template #default>
-          <HelloWorld msg="You did it!" />
+          <div class="flex flex-col gap-10 justify-center items-center">
+            <InfoBox :node="clickedNode" />
+            <TreeNodes
+              :nodes="treeData"
+              v-if="treeData !== undefined"
+              :handleNodeClick="handleNodeClick"
+              @:handleNodeClick="handleNodeClick"
+            />
+            <p v-else>Loading tree data...</p>
+          </div>
         </template>
-        <template #fallback>
-          <p>Loading...</p>
-        </template>
+        <template #fallback> </template>
       </Suspense>
     </div>
   </header>
@@ -27,31 +22,31 @@ import HelloWorld from './components/HelloWorld.vue';
   <main></main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { fetchTreeData } from './server/tree';
+import type { TTreeNode, TTreeNodeWithChildren } from '@Types/index';
+import InfoBox from './components/InfoBox.vue';
+import TreeNodes from './components/TreeNodes.vue';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+const treeData = ref<TTreeNode[] | undefined>(undefined);
+const clickedNode = ref<TTreeNodeWithChildren | undefined>(undefined);
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+onMounted(async () => {
+  treeData.value = await fetchTreeData();
+});
+
+const handleNodeClick = (node: TTreeNodeWithChildren) => {
+  console.log('node', node);
+
+  console.log('clickedNode', clickedNode.value);
+  console.log(node);
+
+  if (clickedNode.value && clickedNode.value.name === node.name) {
+    clickedNode.value = undefined;
+    return;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+  clickedNode.value = node;
+};
+</script>

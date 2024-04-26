@@ -24,8 +24,8 @@ onMounted(() => {
 // MOUNT THE TREE
 //#######################################################
 const mountTree = (rootNode: TTreeNodeWithChildren) => {
-  const width = 600;
-  const height = 400;
+  const width = 800;
+  const height = 600;
   const margin = { top: 20, right: 120, bottom: 20, left: 120 };
 
   // MOUNT THE SVG ON #treeNodes
